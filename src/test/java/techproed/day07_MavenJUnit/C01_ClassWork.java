@@ -48,9 +48,9 @@ public class C01_ClassWork {
 
 
 
-//7.amount kismina yatirmak istediginiz herhangi bir miktari yazin
-//8.tarih kismina "2020-09-10" yazdirin
-//9.Pay buttonuna tiklayin
+        //7.amount kismina yatirmak istediginiz herhangi bir miktari yazin
+        //8.tarih kismina "2020-09-10" yazdirin
+        //9.Pay buttonuna tiklayin
         driver.findElement(By.cssSelector("#sp_amount")).sendKeys("500", Keys.TAB,"2020-09-10",Keys.TAB,Keys.TAB,Keys.ENTER);
 
 
