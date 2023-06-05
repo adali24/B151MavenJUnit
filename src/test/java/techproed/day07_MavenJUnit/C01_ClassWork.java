@@ -1,14 +1,15 @@
-package techproed.day06_Maven;
+package techproed.day07_MavenJUnit;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class C02_ClassWork {
+public class C01_ClassWork {
     public static void main(String[] args) throws InterruptedException {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
@@ -46,22 +47,12 @@ public class C02_ClassWork {
         Thread.sleep(1500);
 
 
-        //7.amount kismina yatirmak istediginiz herhangi bir miktari yazin
-       WebElement amount = driver.findElement(By.xpath("//*[@id='sp_amount']"));
-       amount.sendKeys("1000");
-        Thread.sleep(1500);
 
+//7.amount kismina yatirmak istediginiz herhangi bir miktari yazin
+//8.tarih kismina "2020-09-10" yazdirin
+//9.Pay buttonuna tiklayin
+        driver.findElement(By.cssSelector("#sp_amount")).sendKeys("500", Keys.TAB,"2020-09-10",Keys.TAB,Keys.TAB,Keys.ENTER);
 
-
-        //8.tarih kismina "2020-09-10" yazdirin
-        WebElement date = driver.findElement(By.xpath("//*[@id='sp_date']"));
-        date.sendKeys("2020-09-10");
-        Thread.sleep(1500);
-
-
-        //9.Pay buttonuna tiklayin
-        driver.findElement(By.xpath("//*[@id='pay_saved_payees']")).click();
-        Thread.sleep(1500);
 
         //10."The payment was successfully submitted." mesajinin ciktigini control edin
         WebElement element = driver.findElement(By.xpath("(//*[.='The payment was successfully submitted.'])[2]"));
