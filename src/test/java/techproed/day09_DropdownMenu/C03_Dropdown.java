@@ -1,6 +1,7 @@
 package techproed.day09_DropdownMenu;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,6 +47,7 @@ public class C03_Dropdown {
         //Sectigimiz seceneklerden ilkini yazdiralim , ilk secenegin Java oldugunu dogrulayalim
         System.out.println("Sectigimiz seceneklerden ilki = "+select.getFirstSelectedOption().getText());
         Assert.assertEquals("Java",select.getFirstSelectedOption().getText());
+       bekle(3);
 
         //Sectigimiz seceneklerin hepsini kaldiralim
         select.deselectAll();
@@ -56,11 +58,39 @@ public class C03_Dropdown {
         //visibleText olarak secim yapacagimiz bir method olusturup programming languages ddm'den bir secenek secelim
         selectVisibleText(diller,"Java");
 
+        //index olarak secim yapacagimiz bir method olusturup programming languages ddm'den bir secenek secelim
+        selectIndex(diller,4);
+
+        //value olarak secim yapacagimiz bir method olusturup programming languages ddm'den bir secenek secelim
+        selectValue(diller,"c#");
+
+
+
 
     }
 
-    public void selectVisibleText(WebElement ddm,String secenek){
+    @After
+    public void tearDown() throws Exception {
+        driver.close();
+    }
+
+    public void selectVisibleText(WebElement ddm, String text){
     Select select =new Select(ddm);
-    select.selectByVisibleText(secenek);
+    select.selectByVisibleText(text);
+    }
+    public void selectIndex(WebElement ddm,int index){
+        Select select = new Select(ddm);
+        select.selectByIndex(index);
+    }
+    public void selectValue(WebElement ddm,String value){
+        Select select = new Select(ddm);
+        select.selectByValue(value);
+    }
+    public void bekle(int saniye){
+        try {
+            Thread.sleep(saniye*1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
