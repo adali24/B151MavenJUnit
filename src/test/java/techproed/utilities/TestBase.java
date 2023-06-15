@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestBase {
 /*
@@ -29,7 +31,7 @@ public class TestBase {
 
     @After
     public void tearDown() throws Exception {
-     driver.quit();
+        driver.quit();
     }
 
     // Hard wait (Bekleme methody)
@@ -40,37 +42,57 @@ public class TestBase {
             throw new RuntimeException(e);
         }
     }
+
     //AcceptAlert
-    public void  acceptAlert(){
+    public void acceptAlert() {
         driver.switchTo().alert().accept();
     }
+
     //DismissAlert
-    public void  dismissAlert(){
+    public void dismissAlert() {
         driver.switchTo().alert().dismiss();
     }
+
     //GetTextAlert
-    public String  getTextAlert(){
-       return driver.switchTo().alert().getText();
+    public String getTextAlert() {
+        return driver.switchTo().alert().getText();
     }
+
     //SentKeysAlert
-    public void  sentKeysAlert(String text) {
+    public void sentKeysAlert(String text) {
         driver.switchTo().alert().sendKeys(text);
     }
+
     //DropDown VisibleText
-    public void selectVisibleText(WebElement ddm, String text){
+    public void selectVisibleText(WebElement ddm, String text) {
         Select select = new Select(ddm);
         select.selectByVisibleText(text);
     }
 
     //DropDown Index
-    public void selectIndex(WebElement ddm,int index){
+    public void selectIndex(WebElement ddm, int index) {
         Select select = new Select(ddm);
         select.selectByIndex(index);
     }
 
     //DropDown Value
-    public void selectValue(WebElement ddm,String value){
+    public void selectValue(WebElement ddm, String value) {
         Select select = new Select(ddm);
         select.selectByValue(value);
     }
+
+    // SwitchTo Window
+    public void switchToWindow(int index) {
+        List<String> pencereler = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(pencereler.get(index));
+
+    }
+
+    // SwitchTo Window 2
+    public void Window(int index) {
+
+        driver.switchTo().window(driver.getWindowHandles().toArray()[index].toString());
+
+    }
+
 }
