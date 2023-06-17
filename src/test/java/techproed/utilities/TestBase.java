@@ -93,6 +93,8 @@ public class TestBase {
 
         driver.switchTo().window(driver.getWindowHandles().toArray()[index].toString());
 
+
+
     }
 
 }
