@@ -64,9 +64,9 @@ public class TestBase {
     }
 
     // FluentWait visible methodu
-    public void visibleFluentWait(WebElement element, int saniye, int salise) {
+    public void visibleFluentWait(WebElement element, int saniye, int milisaniye) {
         new FluentWait<>(driver).withTimeout(Duration.ofSeconds(saniye)).
-                pollingEvery(Duration.ofMillis(salise)).
+                pollingEvery(Duration.ofMillis(milisaniye)).
                 until(ExpectedConditions.visibilityOf(element));
     }
 
