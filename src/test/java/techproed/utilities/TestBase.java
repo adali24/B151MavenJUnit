@@ -120,7 +120,7 @@ public class TestBase {
     }
 
     // SwitchTo Window 2
-    public void Window(int index) {
+    public void switchWindow(int index) {
 
         driver.switchTo().window(driver.getWindowHandles().toArray()[index].toString());
 
@@ -137,5 +137,16 @@ public class TestBase {
             throw new RuntimeException(e);
         }
     }
+    //WebElement Resmi (Webelement ScreenShot)
+    public void webElementResmi(WebElement element){
+        String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String dosyaYolu = "src/test/java/techproed/ElementResmi/WEscreenShot" + tarih + ".jpeg";
+        try {
+            FileUtils.copyFile(element.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }
