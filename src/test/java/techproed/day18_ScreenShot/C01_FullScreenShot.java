@@ -37,7 +37,7 @@ dosya yolunu belirteceğiz
  */
 
 
-        String dosyaYolu = "src/test/java/techproed/TumSayfaResimleri/screenShoot.gif";
+        String dosyaYolu = "src/test/java/techproed/TumSayfaResmi/screenShoot.gif";
         TakesScreenshot ts = (TakesScreenshot) driver;
         FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), new File(dosyaYolu));
 
@@ -55,7 +55,7 @@ dosya yolunu belirteceğiz
 //Ve ekran görüntüsünü alalım
 
 
-        String dosyaYolu = "src/test/java/techproed/TumSayfaResimleri/screenShoot.gif";
+        String dosyaYolu = "src/test/java/techproed/TumSayfaResmi/screenShoot.gif";
         TakesScreenshot ts = (TakesScreenshot) driver;
         FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), new File("ScreenShot/ekranresmi.png"));
     }
@@ -80,11 +80,27 @@ String bir değişkene tarih formatı atayabiliriz.
 
 
         String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyy").format(new Date());
-        String dosyaYolu = "src/test/java/techproed/TumSayfaResimleri/screenShoot"+tarih+".jpeg";
+        String dosyaYolu = "src/test/java/techproed/TumSayfaResmi/screenShoot"+tarih+".jpeg";
         TakesScreenshot ts = (TakesScreenshot) driver;
         FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), new File(dosyaYolu));
 
 
     }
 
+    @Test
+    public void test04() throws IOException {
+
+        //amazon sayfasına gidelim
+        driver.get("https://amazon.com");
+
+        bekle(2);
+
+        //Ve ekran görüntüsünü alalım
+
+        String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String dosyaYolu = "src/test/java/techproed/TumSayfaResmi/screenShot" + tarih + ".jpeg";
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));
+
+    }
 }
