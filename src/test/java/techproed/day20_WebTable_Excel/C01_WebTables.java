@@ -1,4 +1,4 @@
-package techproed.day19_ExtentReport_WebTables;
+package techproed.day20_WebTable_Excel;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import techproed.utilities.TestBase;
 
 import java.util.List;
 
-public class C03_WebTables extends TestBase {
+public class C01_WebTables extends TestBase {
 /*
     WEBTABLE;
         <table> tagi ile baslar
