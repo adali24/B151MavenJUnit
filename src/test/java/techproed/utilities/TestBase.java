@@ -46,7 +46,7 @@ public class TestBase {
     public void tearDown() throws Exception {
         extentReports= new ExtentReports();
         extentReports.flush();
-        driver.quit();
+       // driver.quit();
     }
 
     // Hard wait (Bekleme methody)
