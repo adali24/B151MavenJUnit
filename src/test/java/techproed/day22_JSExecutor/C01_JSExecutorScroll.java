@@ -17,22 +17,22 @@ public class C01_JSExecutorScroll extends TestBase {
      */
     @Test
     public void test01() {
- //Techpro education ana sayfasına git
+        //Techpro education ana sayfasına git
         driver.get("https://techproeducation.com");
         driver.findElement(By.xpath("//*[@class='eicon-close']")).click();
 
 
 //"We Offer" elementi görünür olacak şekilde üzerine scroll et ve ekran görüntüsünü al
-        WebElement weOfferWe=driver.findElement(By.xpath("//*[.='we offer']"));
+        WebElement weOfferWe = driver.findElement(By.xpath("//*[.='we offer']"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView(true);",weOfferWe);
+        js.executeScript("arguments[0].scrollIntoView(true);", weOfferWe);
         bekle(2);
         tumSayfaResmi();
 
 //Aynı sayfada "Enroll Free "elementi görünür olacak sekilde scroll et ve ekran görüntüsünü al
         WebElement enrollFree = driver.findElement(By.xpath("//*[.='Enroll Free Course']"));
 
-        js.executeScript("arguments[0].scrollIntoView(true);",enrollFree);
+        js.executeScript("arguments[0].scrollIntoView(true);", enrollFree);
         bekle(2);
         tumSayfaResmi();
 
@@ -40,13 +40,13 @@ public class C01_JSExecutorScroll extends TestBase {
 //Aynı sayfada "WHY US?" elementi görünür olacak şekilde scroll et ve ekran görüntüsünü al
         WebElement whyUs = driver.findElement(By.xpath("(//*[.='WHY US?'])[1]"));
 
-        js.executeScript("arguments[0].scrollIntoView(true);",whyUs);
+        js.executeScript("arguments[0].scrollIntoView(true);", whyUs);
         bekle(2);
         tumSayfaResmi();
 
 
 //Aynı sayfada tekrar "Enroll Free" elementi görünür olacak şekilde scroll et ve ekran görüntüsünü al
-        js.executeScript("arguments[0].scrollIntoView(true);",enrollFree);
+        js.executeScript("arguments[0].scrollIntoView(true);", enrollFree);
         bekle(2);
         tumSayfaResmi();
 
@@ -57,6 +57,7 @@ public class C01_JSExecutorScroll extends TestBase {
         js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
 
     }
+
     @Test
     public void test02() {
         //Techpro education ana sayfasına git
@@ -66,5 +67,42 @@ public class C01_JSExecutorScroll extends TestBase {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0,500)");
 
+    }
+
+    @Test
+    public void test03() {
+        //Techpro education ana sayfasına git
+        driver.get("https://techproeducation.com");
+        bekle(2);
+        driver.findElement(By.xpath("//i[@class='eicon-close']")).click();
+
+        //"We Offer" elementi görünür olacak şekilde üzerine scroll et ve ekran görüntüsünü al
+        WebElement weofferWE = driver.findElement(By.xpath("//*[.='we offer']"));
+        jsScrollWE(weofferWE);
+        bekle(2);
+        tumSayfaResmi();//-->TestBase deki ScreenShot methodu
+
+        //Aynı sayfada "Enroll Free "elementi görünür olacak sekilde scroll et ve ekran görüntüsünü al
+        WebElement enrollFreeWE = driver.findElement(By.xpath("//*[.='Enroll Free Course']"));
+        jsScrollWE(enrollFreeWE);
+        bekle(2);
+        tumSayfaResmi();
+
+        //Aynı sayfada "WHY US?" elementi görünür olacak şekilde scroll et ve ekran görüntüsünü al
+        WebElement whyUsWE = driver.findElement(By.xpath("//*[text()='WHY US?']"));
+        jsScrollWE(whyUsWE);
+        bekle(2);
+        tumSayfaResmi();
+
+        //Aynı sayfada tekrar "Enroll Free" elementi görünür olacak şekilde scroll et ve ekran görüntüsünü al
+        jsScrollWE(enrollFreeWE);
+        bekle(2);
+        tumSayfaResmi();
+
+        //Sayfayı en alta scroll yapalım
+        scrollEnd();
+        bekle(2);
+        //Sayfayi en üste scroll yapalım
+        scrollHome();
     }
 }
