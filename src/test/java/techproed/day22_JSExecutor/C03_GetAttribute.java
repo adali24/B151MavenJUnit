@@ -29,7 +29,32 @@ public class C03_GetAttribute extends TestBase {
     ile alabiliriz. Yukarıdaki örnekte sayfadaki tarih webelementini js executor ile locate ettik.
      */
 
-        // Date webelemetinin Attribute degerlerini yazdiralim
 
+        // Date webelementinin Atribute değerlerini yazdıralım
+        String idAttributeDegeri = js.executeScript("return document.getElementById('checkin_date').id").toString();
+        String typeAttributeDegeri = js.executeScript("return document.getElementById('checkin_date').type").toString();
+        String nameAttributeDegeri = js.executeScript("return document.getElementById('checkin_date').name").toString();
+        String valueAttributeDegeri = js.executeScript("return document.getElementById('checkin_date').value").toString();
+        System.out.println("ID Attribute degeri : "+idAttributeDegeri);
+        System.out.println("type Attribute degeri : "+typeAttributeDegeri);
+        System.out.println("name Attribute degeri : "+nameAttributeDegeri);
+        System.out.println("value Attribute degeri : "+valueAttributeDegeri);
+/*
+Js executor ile attribute değerlerini yazdırabilmek için js ile locate ettiğimiz webelementin sonuna
+yukarıdaki örnekteki gibi hangi attributun değeri yazdırmak istersek sonuna attribute adını yazarız.
+ */
+
+    }
+
+    @Test
+    public void test02() {
+        //https://www.priceline.com/ adresine gidiniz
+
+        driver.get("https://www.priceline.com");
+
+        //Submit butonunun rengini Kirmizi yazınız
+        WebElement button = driver.findElement(By.xpath("//*[text()='Find Your Hotel']"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].style.color='red';",button);
     }
 }
